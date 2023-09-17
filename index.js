@@ -3,7 +3,7 @@ const cors = require('cors')
 const app = express()
 const Person = require('./models/persons')
 
-app.use(express.static('build'))
+app.use(express.static('dist'))
 app.use(cors())
 app.use(express.json())
 
