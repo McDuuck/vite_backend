@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const Person = require('./models/persons')
+const now = new Date(); const day = now
 
 app.use(express.static('dist'))
 app.use(cors())
@@ -60,9 +61,10 @@ app.post('/api/persons', (req, res, next) => {
     })
 })
 
-app.post('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>')
+app.get('/info', (req, res) => {
+  res.send(`<h1>Phonebook has info for ${Person.length} persons</h1> </br> <h1>${day}`)
 })
+
 
 app.delete('/api/persons/:id', (req, res, next) => {
   Person.findByIdAndRemove(req.params.id)
